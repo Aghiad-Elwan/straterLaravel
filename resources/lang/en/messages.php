@@ -15,5 +15,10 @@ return [
 
     'welcome'=>'WELCOME',
     'Hi'=>'HI',
+    'name required'=>'name required',
+    'name unique'=>'name is found',
+    'price numeric'=>'most enter price integer',
+    'price required'=>'price required',
+    'details required'=>'details required',
 
 ];

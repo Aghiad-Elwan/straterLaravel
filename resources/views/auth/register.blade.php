@@ -66,7 +66,11 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                  <br>  
+                                <div class="col-md-6 offset-md-4">
+                                <a href="{{url('redirect/facebook')}}">log with facebook</a>
                             </div>
+                            
                         </div>
                     </form>
                 </div>

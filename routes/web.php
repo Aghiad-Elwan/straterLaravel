@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\Front\SecondController;
 use App\Http\Controllers\Front\NewsController;
+use App\Http\Controllers\Front\SoicalController;
+use App\Http\Controllers\Front\CrudController;
+//use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,4 +102,28 @@ Route::resource('news',NewsController::class);
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+
+Route::get('/redirect/{service}}',[SoicalController::class,'redirect']);
+
+Route::get('/callback/{service}}',[SoicalController::class,'callback']);
+
+
+//Offers
+Route::get('/fillable',[CrudController::class,'getOffers']);
+
+/*Route::group(['prefix'=>'offers'],function (){
+    Route::get('store',[CrudController::class,'store']);
+});*/
+
+
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function () {
+    Route::group(['prefix' => 'offers'], function () {
+        Route::get('create', [CrudController::class, 'create']);
+        Route::post('store', [CrudController::class, 'store'])->name('offers.store');
+    });
+});
+
 

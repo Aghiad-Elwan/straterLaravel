@@ -168,7 +168,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
     ])->toArray(),
+    Vendor\laravel\socialite\src\SocialiteServiceProvider::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -183,6 +185,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+
     ])->toArray(),
+    'Socialite'=>Vendor\laravel\socialite\src\Facades\Socialite::class,
+
 
 ];
